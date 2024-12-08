@@ -29,8 +29,8 @@ const CreateTask = () => {
     setUserData(data)
 
     setAsignTo("")
-    setTask("")
     setTaskTitle("")
+    setCategory("")
     setDate("")
     setDescription("")
 
