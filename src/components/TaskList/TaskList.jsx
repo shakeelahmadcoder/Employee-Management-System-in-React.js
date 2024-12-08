@@ -5,6 +5,7 @@ import FailedTask from './FailedTask'
 import NewTask from './NewTask'
 
 const TaskList = ({data}) => {
+  console.log(data.tasks)
   return (
     <>
       <h1 className='text-2xl font-bold text-center mt-2'>Tasks List</h1>
