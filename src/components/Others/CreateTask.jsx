@@ -14,28 +14,35 @@ const CreateTask = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!asignTo || !taskTitle || !category || !date || !description) {
+      alert("All fields are required.");
+      return;
+    }
     const newTask = ({ active: true, newTask: true, completed: false, failed: false, asignTo, taskTitle, category, date, description })
     setTask(newTask)
-    const data = userData;
-
-    data.forEach((elem) => {
+   
+   const updatedUserData = userData.map((elem) => {
       if (asignTo === elem.firstName) {
-        elem.tasks.push(task)
-        elem.taskCounts.newTask = elem.taskCounts.newTask + 1;
+        elem.tasks.push(newTask)
+        elem.taskCounts.newTask +=1;
         console.log(elem)
       }
+      return elem
 
     })
-    setUserData(data)
+    setUserData(updatedUserData)
 
-    setAsignTo("")
-    setTaskTitle("")
-    setCategory("")
-    setDate("")
-    setDescription("")
-
+    resetFields()
+    
   }
-
+  
+  const resetFields = () => {
+    setAsignTo("");
+    setTaskTitle("");
+    setCategory("");
+    setDate("");
+    setDescription("");
+  };
   return (
     <div className='bg-[#1C1C1C] p-8 rounded-xl'>
       <h1 className='text-xl md:text-2xl font-bold text-center'>Asign Tasks to Your Employees</h1>
